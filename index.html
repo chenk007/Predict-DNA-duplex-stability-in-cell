@@ -31,7 +31,24 @@ table{width:100%;border-collapse:collapse;font-size:14px} th,td{border-bottom:1p
 <li>Δ<i>H</i>° = Σ(NN Δ<i>H</i>°) + initiation + terminal correction</li>
 <li>Δ<i>S</i>° = Σ(NN Δ<i>S</i>°) + initiation + terminal correction</li>
 <li>Δ<i>G</i>°<sub>37</sub> = Δ<i>H</i>° − 310.15 × Δ<i>S</i>° / 1000</li>
-<li><i>T</i><sub>m</sub> is calculated using the nearest-neighbor model.</li>
+
+<li>
+For non-self-complementary duplexes:
+<i>T</i><sub>m</sub><sup>−1</sup> =
+[R ln(C<sub>t</sub>/4) + Δ<i>S</i>°] / Δ<i>H</i>°
+</li>
+
+<li>
+For self-complementary duplexes:
+<i>T</i><sub>m</sub><sup>−1</sup> =
+[R ln(C<sub>t</sub>) + Δ<i>S</i>°] / Δ<i>H</i>°
+</li>
+
+<li>
+R = 1.987 cal mol<sup>−1</sup> K<sup>−1</sup>;
+C<sub>t</sub> is the total strand concentration.
+</li>
+
 <li>For self-complementary sequences, symmetry correction is applied.</li>
 <li>Equivalent nearest-neighbor representation is used: 5′XY3′/3′ZW5′ = 5′WZ3′/3′YX5′.</li>
 </ul>
