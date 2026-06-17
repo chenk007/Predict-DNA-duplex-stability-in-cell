@@ -23,7 +23,7 @@ table{width:100%;border-collapse:collapse;font-size:14px} th,td{border-bottom:1p
 </div>
 <div class="card"><button onclick="calculate()">Calculate</button><button class="secondary" onclick="copyResults()">Copy summary</button><span id="status" class="muted"></span></div>
 <div class="card" id="out"><div class="muted">Results for the selected condition will appear here.</div></div>
-<div class="card"><b>Input rules</b><p class="muted">Use A/C/G/T or dA/dC/dG/dT. Strand A is always 5′→3′. Default Strand B is written left-to-right as the antiparallel strand directly under A, i.e. 3′→5′. NN lookup uses reverse-orientation equivalence, for example <code>dAC/dTG</code> is matched to <code>dGT/dCA</code>.</p></div>
+<div class="card"><b>Input rules</b><p class="muted">Use A/C/G/T or dA/dC/dG/dT. Strand A is always 5′→3′. Default Strand B is written left-to-right as the antiparallel strand directly under A, i.e. 3′→5′. NN lookup uses NN symmetry <code>5′XY3′/3′ZW5′ = 5′WZ3′/3′YX5′</code>, for example <code>dAG/dTC</code> is matched to <code>dCT/dGA</code>.</p></div>
 </main><script>
 const PARAMS = {"Buffer_0wt_PEG": {"label": "0 wt% PEG200, 100 mM NaCl", "kind": "buffer", "nn": {"dAA/dTT": {"dH": -7.9, "dS": -23.3, "dG37": -0.65}, "dAT/dTA": {"dH": -7.2, "dS": -21.3, "dG37": -0.6}, "dTA/dAT": {"dH": -7.2, "dS": -22.0, "dG37": -0.36}, "dCA/dGT": {"dH": -8.5, "dS": -23.4, "dG37": -1.23}, "dGT/dCA": {"dH": -8.4, "dS": -23.2, "dG37": -1.2}, "dCT/dGA": {"dH": -7.8, "dS": -21.5, "dG37": -1.11}, "dGA/dCT": {"dH": -8.2, "dS": -23.4, "dG37": -0.93}, "dCG/dGC": {"dH": -10.6, "dS": -28.2, "dG37": -1.85}, "dGC/dCG": {"dH": -9.8, "dS": -25.0, "dG37": -2.05}, "dGG/dCC": {"dH": -8.0, "dS": -20.4, "dG37": -1.69}}, "terminal": {"GC": {"dH": 0.1, "dS": -2.8, "dG37": 0.98}, "AT": {"dH": 2.3, "dS": 4.1, "dG37": 1.03}}, "self": {"self": {"dH": 0.0, "dS": -1.4, "dG37": 0.4}, "nonself": {"dH": 0.0, "dS": 0.0, "dG37": 0.0}}, "notes": "Parameters from uploaded Excel Table S5."}, "Buffer_40wt_PEG": {"label": "40 wt% PEG200, 100 mM NaCl", "kind": "buffer", "nn": {"dAA/dTT": {"dH": -6.5, "dS": -19.2, "dG37": -0.55}, "dAT/dTA": {"dH": -9.4, "dS": -29.4, "dG37": -0.28}, "dTA/dAT": {"dH": -4.3, "dS": -13.3, "dG37": -0.16}, "dCA/dGT": {"dH": -13.1, "dS": -38.8, "dG37": -1.0}, "dGT/dCA": {"dH": -9.2, "dS": -26.8, "dG37": -0.89}, "dCT/dGA": {"dH": -3.4, "dS": -7.9, "dG37": -0.91}, "dGA/dCT": {"dH": -4.9, "dS": -13.0, "dG37": -0.87}, "dCG/dGC": {"dH": -6.4, "dS": -16.1, "dG37": -1.38}, "dGC/dCG": {"dH": -4.2, "dS": -9.3, "dG37": -1.31}, "dGG/dCC": {"dH": -4.0, "dS": -8.9, "dG37": -1.25}}, "terminal": {"GC": {"dH": -10.1, "dS": -35.1, "dG37": 0.76}, "AT": {"dH": -2.9, "dS": -12.7, "dG37": 1.0}}, "self": {"self": {"dH": 0.0, "dS": -1.4, "dG37": 0.4}, "nonself": {"dH": 0.0, "dS": 0.0, "dG37": 0.0}}, "notes": "Parameters from uploaded Excel Table S5."}, "NIH3T3": {"label": "normal cell", "kind": "cell", "nn": {"dAA/dTT": {"dH": -6.8, "dS": -19.6, "dG37": -0.72}, "dAT/dTA": {"dH": -7.7, "dS": -23.3, "dG37": -0.45}, "dTA/dAT": {"dH": -6.7, "dS": -20.4, "dG37": -0.36}, "dCA/dGT": {"dH": -6.8, "dS": -18.5, "dG37": -1.03}, "dGT/dCA": {"dH": -6.4, "dS": -18.0, "dG37": -0.8}, "dCT/dGA": {"dH": -5.6, "dS": -15.7, "dG37": -0.7}, "dGA/dCT": {"dH": -6.0, "dS": -16.6, "dG37": -0.84}, "dCG/dGC": {"dH": -7.8, "dS": -20.1, "dG37": -1.54}, "dGC/dCG": {"dH": -6.9, "dS": -17.5, "dG37": -1.45}, "dGG/dCC": {"dH": -6.4, "dS": -16.1, "dG37": -1.4}}, "terminal": {"GC": {"dH": -12.8, "dS": -43.2, "dG37": 0.57}, "AT": {"dH": -4.3, "dS": -16.0, "dG37": 0.67}}, "self": {"self": {"dH": 0.0, "dS": -1.4, "dG37": 0.4}, "nonself": {"dH": 0.0, "dS": 0.0, "dG37": 0.0}}, "notes": "Parameters from uploaded Excel SHELL tables."}, "MCF7": {"label": "mild cancer cell", "kind": "cell", "nn": {"dAA/dTT": {"dH": -5.9, "dS": -17.1, "dG37": -0.58}, "dAT/dTA": {"dH": -6.8, "dS": -20.7, "dG37": -0.37}, "dTA/dAT": {"dH": -6.3, "dS": -19.4, "dG37": -0.28}, "dCA/dGT": {"dH": -7.1, "dS": -19.9, "dG37": -0.91}, "dGT/dCA": {"dH": -7.8, "dS": -22.6, "dG37": -0.76}, "dCT/dGA": {"dH": -7.4, "dS": -21.6, "dG37": -0.67}, "dGA/dCT": {"dH": -8.3, "dS": -24.2, "dG37": -0.77}, "dCG/dGC": {"dH": -9.8, "dS": -26.7, "dG37": -1.48}, "dGC/dCG": {"dH": -5.9, "dS": -14.8, "dG37": -1.29}, "dGG/dCC": {"dH": -5.3, "dS": -13.1, "dG37": -1.23}}, "terminal": {"GC": {"dH": -11.7, "dS": -39.7, "dG37": 0.57}, "AT": {"dH": -3.7, "dS": -14.1, "dG37": 0.71}}, "self": {"self": {"dH": 0.0, "dS": -1.4, "dG37": 0.4}, "nonself": {"dH": 0.0, "dS": 0.0, "dG37": 0.0}}, "notes": "Parameters from uploaded Excel SHELL tables."}, "MDA_MB_231": {"label": "aggressive cancer cell", "kind": "cell", "nn": {"dAA/dTT": {"dH": -5.7, "dS": -17.0, "dG37": -0.43}, "dAT/dTA": {"dH": -7.9, "dS": -24.4, "dG37": -0.31}, "dTA/dAT": {"dH": -6.8, "dS": -21.3, "dG37": -0.17}, "dCA/dGT": {"dH": -8.2, "dS": -23.8, "dG37": -0.81}, "dGT/dCA": {"dH": -7.4, "dS": -21.5, "dG37": -0.71}, "dCT/dGA": {"dH": -4.9, "dS": -13.9, "dG37": -0.58}, "dGA/dCT": {"dH": -5.8, "dS": -16.5, "dG37": -0.66}, "dCG/dGC": {"dH": -5.9, "dS": -15.2, "dG37": -1.16}, "dGC/dCG": {"dH": -8.9, "dS": -25.5, "dG37": -0.96}, "dGG/dCC": {"dH": -6.4, "dS": -17.3, "dG37": -1.0}}, "terminal": {"GC": {"dH": -10.8, "dS": -36.9, "dG37": 0.68}, "AT": {"dH": -2.8, "dS": -11.5, "dG37": 0.8}}, "self": {"self": {"dH": 0.0, "dS": -1.4, "dG37": 0.4}, "nonself": {"dH": 0.0, "dS": 0.0, "dG37": 0.0}}, "notes": "Parameters from uploaded Excel SHELL tables."}};
 const R = 1.98720425864083;
@@ -38,18 +38,21 @@ function fmt(x,n=2){return Number.isFinite(x)?x.toFixed(n):'—'}
 function add(a,b){a.dH+=b.dH||0; a.dS+=b.dS||0; a.dG37+=b.dG37||0}
 function bpType(a,b){let p=a+b; if(p==='GC'||p==='CG')return 'GC'; if(p==='AT'||p==='TA')return 'AT'; return null}
 function nnLookup(set, top2, bot2){
-  let k='d'+top2+'/d'+bot2;
-  if(set.nn[k]) return [k,set.nn[k]];
-  let kr='d'+top2.split('').reverse().join('')+'/d'+bot2.split('').reverse().join('');
-  if(set.nn[kr]) return [kr,set.nn[kr]];
-  return [k,null];
+  // NN symmetry: 5′XY3′/3′ZW5′ = 5′WZ3′/3′YX5′
+  const observed='d'+top2+'/d'+bot2;
+  if(set.nn[observed]) return [observed,set.nn[observed]];
+
+  const equivalent='d'+bot2[1]+bot2[0]+'/d'+top2[1]+top2[0];
+  if(set.nn[equivalent]) return [equivalent,set.nn[equivalent]];
+
+  return [observed,null];
 }
 function isSelfComplementary(top,bottomUnder){return top===rc(top) && bottomUnder===compUnder(top)}
 function computeForSet(set, top, bottom, ctMicroM){
   let total={dH:0,dS:0,dG37:0}, rows=[];
   for(let i=0;i<top.length-1;i++){
     const top2=top.slice(i,i+2), bot2=bottom.slice(i,i+2); const [key,val]=nnLookup(set,top2,bot2);
-    if(!val) throw new Error(`Missing NN parameter for d${top2}/d${bot2} and reverse orientation in ${set.label}.`);
+    if(!val) throw new Error(`Missing NN parameter for d${top2}/d${bot2} and equivalent orientation in ${set.label}.`);
     add(total,val); rows.push({type:'NN',pos:`${i+1}-${i+2}`,term:`d${top2}/d${bot2}`,used:key,...val});
   }
   const ends=[['5′ end',top[0],bottom[0]],['3′ end',top[top.length-1],bottom[bottom.length-1]]];
